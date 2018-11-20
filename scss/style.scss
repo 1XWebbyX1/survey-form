@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+$color: #4d1933;
+
+$trans: translate(-50%, -50%);
+
+@mixin position($position, $top, $left){
+  position: $position;
+  top: $top;
+  left: $left;
+}
+
+
+body{
+  background: #13060d;
+  font-family: Raleway;
+  overflow: hidden;
+}
+
+
+#app{
+  @include position(relative, 0, 0);
+  height: 100vh;
+  width: 200%;        //to create slide effect for survey form
+  transition: all 2s ease;
+}
+
+
+//HOME PAGE CSS____________________________________________________________________________________________________
+.card{
+  @include position(absolute, 50%, 50vw);
+  background: white;
+  transform: $trans;
+  width: 40vmax;
+  height: 25vmax;
+  border-radius: 2%;
+  padding: 4%;
+  text-align: center;
+  
+   //introduction string__________________________________________
+  .text{
+    @include position(absolute, 30%, 0);
+    font-size: 1.5vmax;
+    line-height: auto;
+    padding: 2%;
+    //greeting__________________________
+   >span{
+      @include position(absolute, 0, 50%);
+      font-size: 2vmax;
+      transform: $trans;
+    }
+  }
+  
+  //survey button_____________________
+  button{
+    @include position(absolute, 80%, 50%);
+    transform: $trans;
+    height: 15%;
+    font-size: 1vmax;
+    background: transparent;
+    border:  2px solid $color;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 0.1px rgba(77,25,51,0.3);
+    padding: 2%;
+    outline: none;
+    transition: box-shadow 1s ease;
+    
+    &:hover{
+      box-shadow: inset 400px 0 0 0 rgba(77,25,51,1);
+      color: white;
+    }
+  }
+  
+  //smile icon_____________________________________
+  i{
+    @include position(absolute, 15%, 50%);
+    transform: $trans;
+    font-size: 4.5vmax;
+    color: $color;
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+//SURVEY FORM________________________________________________________________________________________________________
+  
+  .back{
+     @include position(absolute, 5%, 150vw);
+     transform: translateX(-50%);
+     height: 95vh;
+     width: 85vmax;
+     background: transparent;
+     font-weight: bold !important;
+
+     //left form-------------------------
+     #required{
+       left: 2%;
+     }
+    
+    
+    //right form-------------------------
+    #suggest{
+       left: 50%;
+       right: 2%;
+       width: 42vmax;
+      
+      #like-dropdown-label{
+        @include position(absolute, 7%, 2%);
+        padding: 3%;
+        color: black;
+        font-size: 1.5vmax;
+        font-weight: bold !important;
+      }
+       
+      //dropdown--------------
+       #like{
+          
+         #dropdown-like{
+           @include position(absolute, 10%, 52%);
+           width: 13vmax;
+           height: 6%;
+           font-size: 1.5vmax;
+           outline: none;
+         }
+      }
+       
+      //chheckbox field
+      #checkbox{
+           @include position(absolute, 28%, 60%);
+           font-size: 1.5vmax;
+           color: black;
+           
+        .field{
+          display: inline-block !important;
+        }
+        
+           label{
+             position: relative;
+             padding-bottom: 3%;
+             font-weight: bold;
+             top: -12%;
+             width: 90%;
+            
+           input{
+               position: absolute;
+               font-size: 1vmax;
+               zoom: 1.5;
+               top: 10%;
+               left: -15%;
+             }
+         }
+        }
+      }
+   }
+
+
+  .form{
+     @include position(absolute, 2%, 50%);
+     width: 43vmax;
+     min-height: 90vh;
+     background: rgba(243, 243, 243, 1);
+     border: 4px solid black;
+     border-radius: 5px;
+     font-weight: bold;
+     transition: all 1s ease;
+  
+     #inputs{
+       @include position(absolute, 7%, 5%);
+       width: 100%;
+       padding: 1%;
+       color: black;
+       font-size: 1.5vmax;
+  
+     input{
+       margin-left: 2%;
+       background: transparent;
+       border: none;
+       border-bottom: 2px solid #666666;
+       color: #cc5200;
+       width: 90%;
+       outline: none;
+       padding-left: 5%;
+       margin-bottom: 5%;
+       transition: all 1s ease;
+   
+     &:valid{
+       border-color: green;
+    }
+    &:invalid{
+       border-color: red;
+    }
+   }
+  }
+    .error{
+      color: red;
+    }
+  
+    #drop{
+        line-height: auto;
+    }
+  
+    #dropdown{
+      @include position(absolute, 88%, 55%);
+      width: 13vmax;
+      height: 10%;
+      font-size: 1.5vmax;
+      outline: none;
+   }
+  
+   legend{
+     @include position(absolute, 28%, 5%);
+     color: black;
+     font-size: 1.5vmax;
+     font-weight: bold;
+   }
+  
+  }
+
+
+.comment-box{
+   @include position(absolute, 90%, 50%);
+   transform: $trans;
+   background: rgb(240, 240, 240);
+   width: 40vmax;
+   height: 25%;
+   border: 2px solid $color;
+  
+  
+  #comment-area{
+    @include position(absolute, 30%, 50%);
+    resize: vertical;
+    font-size: 1.2vmax;
+    width: 40%;
+    height: 30%;
+    transform: $trans;
+    outline: none;
+  }
+  
+  #submit{
+    @include position(absolute, 80%, 50%);
+    font-size: 2vmax;
+    transform: $trans;
+    width: 20vmax;
+    height: 40%;
+  }
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 850px) {
+  //for tablets
+  
+  body .card{
+    width: 55vmax;
+    height: 40vmax;
+    
+    .text{
+      font-size: 2.3vmax;
+      
+      >span{
+        font-size: 3vmax;
+      }
+    }
+    
+    button{
+      font-size: 1.8vmax;
+    }
+    
+    i{
+      font-size: 5vmax;
+    }
+  }
+  body .back {
+    width: 100vw;
+   .form{
+     left: 0;
+     width: 50%;
+     legend{
+      font-size: 1.9vmax;
+    }
+     
+     #dropdown{
+       left: 50%;
+     }
+   }
+  }
+  #inputs{
+    top: 5%;
+    font-size: 1.9vmax !important;
+    input{
+    }
+  }
+  
+  body .back #required{
+    left: 0;
+  }
+  body .back #suggest{
+    width: 50%;
+    #like-dropdown-label{
+      font-size: 1.9vmax;
+    }
+    
+    #like #dropdown-like{
+      top: 8%;
+      left: 62%;
+      height: 4%;
+    }
+    
+    #checkbox{
+       left: 70%;
+      label{
+        font-size: 1.9vmax;
+        input{
+          zoom: 1;
+        }
+      }
+    }
+      
+  }
+  
+  body .back .comment-box{
+    font-size: 1.9vmax;
+    width: 50vmax;
+  }
+}
+
+
+
+@media only screen and (max-width: 600px){
+  
+  //for mobile phones-----------------------
+  #app{
+    background: #4d1933;
+  }
+  body .card{
+    width: 55vmax;
+    height: 40vmax;
+    
+    .text{
+      font-size: 2.3vmax;
+      
+      >span{
+        font-size: 3vmax;
+      }
+    }
+    
+    button{
+      font-size: 1.8vmax;
+    }
+    
+    i{
+      font-size: 5vmax;
+    }
+  }
+
+  body .back{
+    top: 0;
+    height: 100vh;
+    width: 90vw;
+    
+    .form{
+      top: 0;
+      width: 100%;
+      border-width: 2px;
+      min-height: 43vh;
+      
+       &:focus-within{
+        height: 200px;
+        z-index:99;
+      }
+      
+      #inputs{
+        font-size: 3.5vw;
+        label{
+          font-weight: bold !important;
+        }
+        input{
+          border-bottom: 1px solid black;
+          width: 80%;
+        }
+      }
+      
+      legend{
+        top: 30%;
+        font-size: 2.3vmax;
+      }
+      
+      #dropdown{
+        top: 85%;
+        left: 60%;
+      }
+    }
+    
+    #required{
+      top: 0;
+      left: 0;
+    }
+    
+    #suggest{
+      top: 42%;
+      left: 0;
+      width: 100%;
+      
+       &:focus-within{
+        height: 200px;
+         z-index:99;
+      }
+        
+      #like-dropdown-label{
+         top: 4%;
+         font-size: 2.3vmax;
+       }
+      
+      #like #dropdown-like{
+        left: 60%;
+        top: 10%;
+      }
+      
+      #checkbox{
+        top: 30%;
+        label{
+          font-size: 2vmax;
+          input{
+            zoom: 0.8;
+          }
+        }
+      }
+    }
+    
+    .comment-box{
+      height: 15%;
+       &:focus-within{
+         height: 150px;
+         z-index:  999;
+         
+         #comment-area{
+           zoom: 2;
+           font-size: 2vw;
+           width: 100%
+         }
+      }
+      #submit{
+        height: 35%;
+      }
+    }
+  }
+
+  
+
+
+}

@@ -1,0 +1,394 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+body {
+  background: #13060d;
+  font-family: Raleway;
+  overflow: hidden;
+}
+
+#app {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 200%;
+  transition: all 2s ease;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50vw;
+  background: white;
+  transform: translate(-50%, -50%);
+  width: 40vmax;
+  height: 25vmax;
+  border-radius: 2%;
+  padding: 4%;
+  text-align: center;
+}
+.card .text {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  font-size: 1.5vmax;
+  line-height: auto;
+  padding: 2%;
+}
+.card .text > span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-size: 2vmax;
+  transform: translate(-50%, -50%);
+}
+.card button {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 15%;
+  font-size: 1vmax;
+  background: transparent;
+  border: 2px solid #4d1933;
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 0.1px rgba(77, 25, 51, 0.3);
+  padding: 2%;
+  outline: none;
+  transition: box-shadow 1s ease;
+}
+.card button:hover {
+  box-shadow: inset 400px 0 0 0 #4d1933;
+  color: white;
+}
+.card i {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4.5vmax;
+  color: #4d1933;
+}
+
+.back {
+  position: absolute;
+  top: 5%;
+  left: 150vw;
+  transform: translateX(-50%);
+  height: 95vh;
+  width: 85vmax;
+  background: transparent;
+  font-weight: bold !important;
+}
+.back #required {
+  left: 2%;
+}
+.back #suggest {
+  left: 50%;
+  right: 2%;
+  width: 42vmax;
+}
+.back #suggest #like-dropdown-label {
+  position: absolute;
+  top: 7%;
+  left: 2%;
+  padding: 3%;
+  color: black;
+  font-size: 1.5vmax;
+  font-weight: bold !important;
+}
+.back #suggest #like #dropdown-like {
+  position: absolute;
+  top: 10%;
+  left: 52%;
+  width: 13vmax;
+  height: 6%;
+  font-size: 1.5vmax;
+  outline: none;
+}
+.back #suggest #checkbox {
+  position: absolute;
+  top: 28%;
+  left: 60%;
+  font-size: 1.5vmax;
+  color: black;
+}
+.back #suggest #checkbox .field {
+  display: inline-block !important;
+}
+.back #suggest #checkbox label {
+  position: relative;
+  padding-bottom: 3%;
+  font-weight: bold;
+  top: -12%;
+  width: 90%;
+}
+.back #suggest #checkbox label input {
+  position: absolute;
+  font-size: 1vmax;
+  zoom: 1.5;
+  top: 10%;
+  left: -15%;
+}
+
+.form {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  width: 43vmax;
+  min-height: 90vh;
+  background: #f3f3f3;
+  border: 4px solid black;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 1s ease;
+}
+.form #inputs {
+  position: absolute;
+  top: 7%;
+  left: 5%;
+  width: 100%;
+  padding: 1%;
+  color: black;
+  font-size: 1.5vmax;
+}
+.form #inputs input {
+  margin-left: 2%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #666666;
+  color: #cc5200;
+  width: 90%;
+  outline: none;
+  padding-left: 5%;
+  margin-bottom: 5%;
+  transition: all 1s ease;
+}
+.form #inputs input:valid {
+  border-color: green;
+}
+.form #inputs input:invalid {
+  border-color: red;
+}
+.form .error {
+  color: red;
+}
+.form #drop {
+  line-height: auto;
+}
+.form #dropdown {
+  position: absolute;
+  top: 88%;
+  left: 55%;
+  width: 13vmax;
+  height: 10%;
+  font-size: 1.5vmax;
+  outline: none;
+}
+.form legend {
+  position: absolute;
+  top: 28%;
+  left: 5%;
+  color: black;
+  font-size: 1.5vmax;
+  font-weight: bold;
+}
+
+.comment-box {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f0f0f0;
+  width: 40vmax;
+  height: 25%;
+  border: 2px solid #4d1933;
+}
+.comment-box #comment-area {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  resize: vertical;
+  font-size: 1.2vmax;
+  width: 40%;
+  height: 30%;
+  transform: translate(-50%, -50%);
+  outline: none;
+}
+.comment-box #submit {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  font-size: 2vmax;
+  transform: translate(-50%, -50%);
+  width: 20vmax;
+  height: 40%;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 850px) {
+  body .card {
+    width: 55vmax;
+    height: 40vmax;
+  }
+  body .card .text {
+    font-size: 2.3vmax;
+  }
+  body .card .text > span {
+    font-size: 3vmax;
+  }
+  body .card button {
+    font-size: 1.8vmax;
+  }
+  body .card i {
+    font-size: 5vmax;
+  }
+
+  body .back {
+    width: 100vw;
+  }
+  body .back .form {
+    left: 0;
+    width: 50%;
+  }
+  body .back .form legend {
+    font-size: 1.9vmax;
+  }
+  body .back .form #dropdown {
+    left: 50%;
+  }
+
+  #inputs {
+    top: 5%;
+    font-size: 1.9vmax !important;
+  }
+
+  body .back #required {
+    left: 0;
+  }
+
+  body .back #suggest {
+    width: 50%;
+  }
+  body .back #suggest #like-dropdown-label {
+    font-size: 1.9vmax;
+  }
+  body .back #suggest #like #dropdown-like {
+    top: 8%;
+    left: 62%;
+    height: 4%;
+  }
+  body .back #suggest #checkbox {
+    left: 70%;
+  }
+  body .back #suggest #checkbox label {
+    font-size: 1.9vmax;
+  }
+  body .back #suggest #checkbox label input {
+    zoom: 1;
+  }
+
+  body .back .comment-box {
+    font-size: 1.9vmax;
+    width: 50vmax;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #app {
+    background: #4d1933;
+  }
+
+  body .card {
+    width: 55vmax;
+    height: 40vmax;
+  }
+  body .card .text {
+    font-size: 2.3vmax;
+  }
+  body .card .text > span {
+    font-size: 3vmax;
+  }
+  body .card button {
+    font-size: 1.8vmax;
+  }
+  body .card i {
+    font-size: 5vmax;
+  }
+
+  body .back {
+    top: 0;
+    height: 100vh;
+    width: 90vw;
+  }
+  body .back .form {
+    top: 0;
+    width: 100%;
+    border-width: 2px;
+    min-height: 43vh;
+  }
+  body .back .form:focus-within {
+    height: 200px;
+    z-index: 99;
+  }
+  body .back .form #inputs {
+    font-size: 3.5vw;
+  }
+  body .back .form #inputs label {
+    font-weight: bold !important;
+  }
+  body .back .form #inputs input {
+    border-bottom: 1px solid black;
+    width: 80%;
+  }
+  body .back .form legend {
+    top: 30%;
+    font-size: 2.3vmax;
+  }
+  body .back .form #dropdown {
+    top: 85%;
+    left: 60%;
+  }
+  body .back #required {
+    top: 0;
+    left: 0;
+  }
+  body .back #suggest {
+    top: 42%;
+    left: 0;
+    width: 100%;
+  }
+  body .back #suggest:focus-within {
+    height: 200px;
+    z-index: 99;
+  }
+  body .back #suggest #like-dropdown-label {
+    top: 4%;
+    font-size: 2.3vmax;
+  }
+  body .back #suggest #like #dropdown-like {
+    left: 60%;
+    top: 10%;
+  }
+  body .back #suggest #checkbox {
+    top: 30%;
+  }
+  body .back #suggest #checkbox label {
+    font-size: 2vmax;
+  }
+  body .back #suggest #checkbox label input {
+    zoom: 0.8;
+  }
+  body .back .comment-box {
+    height: 15%;
+  }
+  body .back .comment-box:focus-within {
+    height: 150px;
+    z-index: 999;
+  }
+  body .back .comment-box:focus-within #comment-area {
+    zoom: 2;
+    font-size: 2vw;
+    width: 100%;
+  }
+  body .back .comment-box #submit {
+    height: 35%;
+  }
+}

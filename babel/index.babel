@@ -1,0 +1,255 @@
+//REACT_______________________________________________
+
+//welcome page card_________________________________________________________
+class Card extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+  //on button click show survey page_____________________
+  handleClick(){
+    $('#app').css('left', '-100%');
+  }
+  //--------------------------------------------
+  
+  render() {
+    return(
+      <div class='card'>
+        <i id='smile' class="fa fa-smile-o" aria-hidden="true"></i>
+        <p class='text'> <span class='span'> Hello Campers!</span>
+          <br /> At freeCodeCamp we try to give our campers the best learning experience. Help us improve by giving us feedback. Your opinion is valued. </p>
+        
+       <button onClick={this.handleClick} id='yes'>Yes, Take me to the survey </button>
+     </div>
+    )
+  }
+}
+
+
+
+//survey form______________________________________________________________-
+class Back extends React.Component{
+  render(){
+    return(
+      <div class='back'>
+        <RequiredForm />
+        <SuggestionForm/>
+        <CommentBox />
+      </div>
+    )
+  }
+}
+
+//obj to hold labels for input _____________________________
+const labels =[
+  {label: '* Name  ', id: 'name-label', input_id: 'name', type: 'text'},
+  {label: '* Email  ', id: 'email-label', input_id: 'email', type: 'email'},
+  {label: '* Age  ', id: 'age-label', input_id: 'age', type: 'number', min: '1', max: '100'}
+]
+
+//options for dropdown____________________________________________
+const options = [
+  'Student', 'Full Time Job', 'Full Time Learner', 'Prefer Not to Say', 'Other'
+]
+
+
+
+
+
+//LEFT form________________________________________________________
+class RequiredForm extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  
+  //when all required fields filled , change border color_________________
+  handleChange(){
+    if($("input").filter(function () {
+    return $.trim($(this).val()).length == 0 //returns array of filled input elements (excludes white spaces with trim)
+}).length == 0){
+      $('.form').css('border-color', 'green');
+    }
+    else{
+        $('.form').css('border-color', 'black');
+    }
+  }
+  //---------------------------------------------------------------------
+  
+  
+  render(){
+    
+    //for each label in labels array create a label and input element-----
+   arr = labels.map((a) => {
+     //for number input----------------------------
+     if(a.hasOwnProperty('min')){
+        return (
+         <div>
+            <label id={a.id}><strong>{a.label}</strong></label>
+          <input name={a.id} id={a.input_id} type={a.type} onChange={this.handleChange} min={a.min} max={a.max} required/><br />
+        </div>
+      );
+      }
+     //for text or email input -----------------------------
+    else{
+      return (
+         <div>
+          <label id={a.id}><b>{a.label}</b></label>
+          <input id={a.input_id} type={a.type} onChange={this.handleChange} required/>
+         </div>
+      )
+      }
+    });
+    
+    //arr for dropdown options---------------------------------------
+    option = options.map((a) => {
+      return(
+        <option value={a}>{a}</option>
+      );
+    })
+   
+    //return the form for rendering______________________________________________________
+    return(
+      <form id='required' class='form'>
+          <div id='inputs'>
+          {arr /*render the labels and inputs */ }
+          <div id='drop'><label id="role-dropdown-label">Which option best describes<br /> your current role? </label>
+           <select name="roles" id="dropdown">
+              {option /*render each option for this dropdown*/}
+           </select>
+         </div>
+        </div>
+      </form>
+    )
+  }
+}
+
+//---------------------------------------------------------------------------------------------------
+
+
+//options for like dropdown-------------
+const like_options = [
+  'Challenges', 'Projects', 'Community', 'Open Source'
+]
+
+
+//options for checkbox--------------------------
+const checkbox_options = [
+  'Front End Projects', 'Back End Projects', 'Data Visualization', 'Open Source Community', 'Gitter Help Rooms'
+]
+
+
+
+//RIGHT FORM_______________________________________________________________________
+class SuggestionForm extends React.Component{
+  render() {
+    
+    //for each option create an option element
+    like_option = like_options.map((a) => {
+      return (
+         <option value={a}>{a}</option>
+      )
+    });
+    
+    //for each option create a checkbox element
+    checkbox_option = checkbox_options.map((a) => {
+      return(
+        <div><label><input class="button" type="checkbox" name="improve-options" value={a} />{a}</label></div>
+      )
+    });
+    
+    return(
+      <div id='suggest' class='form'>
+        <div id='like'>
+        <label id="like-dropdown-label">What do you like <br />most in FCC  </label>
+       <select name="like" id="dropdown-like">
+         <option value="select-an-option" checked>Select an option</option> {/* default option*/}
+         {like_option  /*render each option element*/}
+      </select>
+        </div>
+        
+        {/*render checkbox*/}
+        <div id='field'>
+        <fieldset id ="checkbox-field">
+         <div class='field'>
+        <legend>Things that should be <br />improved in the future <br />(Check all that apply) </legend>
+       <div id="checkbox">
+          {checkbox_option  /*render each checkbox*/}
+        </div>
+          </div>
+    </fieldset>
+         </div>
+     </div>
+    )
+  }
+}
+         
+
+//comment and submit box_______________________________________
+class CommentBox extends React.Component{
+  render() {
+    return(
+      <div class='comment-box'>
+          <textarea id="comment-area" name="comment" placeholder=" Leave us a comment ☻"></textarea>
+           <button id="submit" type="submit" class="btn btn-info">Submit<i class="fa fa-paper-plane"></i></button>
+       </div>
+    )
+  }
+  
+}
+
+
+class App extends React.Component{
+  render(){
+    return(
+      <div>
+        <Card />
+        <Back />
+      </div>
+    )
+  }
+}
+
+
+
+
+//render the app___________________________________________
+ReactDOM.render(<App />, document.getElementById('app'));
+
+
+
+
+
+
+// JQUERY VALIDATION__________________________________________
+
+
+$(document).ready(function() {
+  $(".form").validate({
+  rules: {
+    name: "required",
+    email: {
+      required: true,
+      email: true
+    },
+    age: {
+      required: true,
+      number: true
+    }
+  },
+  messages: {
+    name: "Please specify your name",
+    email: {
+      required: "We need your email address",
+      email: "Your email address must be in the format of name@domain.com"
+    },
+    age: {
+      required: 'Please specify your age',
+      number: 'Your should must be a number between 1 and 100'
+    }
+  }
+});
+})
+
+
