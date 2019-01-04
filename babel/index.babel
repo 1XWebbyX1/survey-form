@@ -1,4 +1,3 @@
-//REACT_______________________________________________
 
 //welcome page card_________________________________________________________
 class Card extends React.Component{
@@ -6,20 +5,18 @@ class Card extends React.Component{
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
-  
-  //on button click show survey page_____________________
+
   handleClick(){
     $('#app').css('left', '-100%');
   }
-  //--------------------------------------------
-  
+
   render() {
     return(
       <div class='card'>
         <i id='smile' class="fa fa-smile-o" aria-hidden="true"></i>
         <p class='text'> <span class='span'> Hello Campers!</span>
           <br /> At freeCodeCamp we try to give our campers the best learning experience. Help us improve by giving us feedback. Your opinion is valued. </p>
-        
+
        <button onClick={this.handleClick} id='yes'>Yes, Take me to the survey </button>
      </div>
     )
@@ -63,7 +60,7 @@ class RequiredForm extends React.Component{
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
-  
+
   //when all required fields filled , change border color_________________
   handleChange(){
     if($("input").filter(function () {
@@ -76,10 +73,10 @@ class RequiredForm extends React.Component{
     }
   }
   //---------------------------------------------------------------------
-  
-  
+
+
   render(){
-    
+
     //for each label in labels array create a label and input element-----
    arr = labels.map((a) => {
      //for number input----------------------------
@@ -101,15 +98,14 @@ class RequiredForm extends React.Component{
       )
       }
     });
-    
+
     //arr for dropdown options---------------------------------------
     option = options.map((a) => {
       return(
         <option value={a}>{a}</option>
       );
     })
-   
-    //return the form for rendering______________________________________________________
+
     return(
       <form id='required' class='form'>
           <div id='inputs'>
@@ -144,21 +140,21 @@ const checkbox_options = [
 //RIGHT FORM_______________________________________________________________________
 class SuggestionForm extends React.Component{
   render() {
-    
+
     //for each option create an option element
     like_option = like_options.map((a) => {
       return (
          <option value={a}>{a}</option>
       )
     });
-    
+
     //for each option create a checkbox element
     checkbox_option = checkbox_options.map((a) => {
       return(
         <div><label><input class="button" type="checkbox" name="improve-options" value={a} />{a}</label></div>
       )
     });
-    
+
     return(
       <div id='suggest' class='form'>
         <div id='like'>
@@ -168,7 +164,7 @@ class SuggestionForm extends React.Component{
          {like_option  /*render each option element*/}
       </select>
         </div>
-        
+
         {/*render checkbox*/}
         <div id='field'>
         <fieldset id ="checkbox-field">
@@ -184,7 +180,7 @@ class SuggestionForm extends React.Component{
     )
   }
 }
-         
+
 
 //comment and submit box_______________________________________
 class CommentBox extends React.Component{
@@ -196,7 +192,7 @@ class CommentBox extends React.Component{
        </div>
     )
   }
-  
+
 }
 
 
@@ -251,5 +247,3 @@ $(document).ready(function() {
   }
 });
 })
-
-
